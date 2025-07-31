@@ -50,13 +50,13 @@ const Upload = () => {
     setIsProcessing(true);
 
     try {
-      setStatusText('Uploading the file...');
+      setStatusText('Mengunggah file...');
       const uploadedFile = await fs.upload([file]);
       if (!uploadedFile) {
         throw new Error('Failed to upload file');
       }
 
-      setStatusText('Converting PDF to image...');
+      setStatusText('Mengkonversi PDF ke gambar...');
 
       // Improved error handling for PDF conversion
       const imageResult = await convertPdfToImage(file, {
@@ -70,13 +70,13 @@ const Upload = () => {
         );
       }
 
-      setStatusText('Uploading the converted image...');
+      setStatusText('Mengunggah gambar yang telah dikonversi...');
       const uploadedImage = await fs.upload([imageResult.file]);
       if (!uploadedImage) {
         throw new Error('Failed to upload converted image');
       }
 
-      setStatusText('Preparing analysis data...');
+      setStatusText('Menyiapkan data analisis...');
       const uuid = generateUUID();
       const data = {
         id: uuid,
@@ -89,7 +89,7 @@ const Upload = () => {
       };
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
-      setStatusText('Analyzing resume with AI...');
+      setStatusText('Menganalisis resume dengan AI...');
 
       const feedback = await ai.feedback(
         uploadedFile.path,
@@ -114,18 +114,18 @@ const Upload = () => {
       }
 
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
-      setStatusText('Analysis complete! Redirecting...');
+      setStatusText('Analisis selesai! Mengalihkan...');
 
-      console.log('Analysis completed:', data);
+      // console.log('Analysis completed:', data);
 
       // Small delay to show completion message
       setTimeout(() => {
         navigate(`/resume/${uuid}`);
       }, 1000);
     } catch (error: any) {
-      console.error('Analysis failed:', error);
+      console.error('Analisis gagal:', error);
       setStatusText(
-        `Error: ${error.message || 'Analysis failed. Please try again.'}`
+        `Error: ${error.message || 'Analisis gagal. Silakan coba lagi.'}`
       );
       setIsProcessing(false);
     }
@@ -135,7 +135,7 @@ const Upload = () => {
     e.preventDefault();
 
     if (!file) {
-      alert('Please select a PDF file first');
+      alert('Silakan pilih file PDF terlebih dahulu');
       return;
     }
 
@@ -148,17 +148,17 @@ const Upload = () => {
 
     // Basic validation
     if (!companyName.trim()) {
-      alert('Please enter company name');
+      alert('Silakan masukkan nama perusahaan');
       return;
     }
 
     if (!jobTitle.trim()) {
-      alert('Please enter job title');
+      alert('Silakan masukkan jabatan');
       return;
     }
 
     if (!jobDescription.trim()) {
-      alert('Please enter job description');
+      alert('Silakan masukkan deskripsi pekerjaan');
       return;
     }
 
@@ -171,17 +171,14 @@ const Upload = () => {
 
       <section className="main-section">
         <div className="page-heading py-16">
-          <h1>Smart feedback for your dream job</h1>
           {isProcessing ? (
             <>
               <h2>{statusText}</h2>
               <img
                 src="/images/resume-scan.gif"
                 className="w-full"
-                alt="Processing..."
+                alt="Sedang memproses..."
               />
-
-              {/* Show cancel button if processing takes too long */}
               <button
                 onClick={() => {
                   setIsProcessing(false);
@@ -189,18 +186,19 @@ const Upload = () => {
                 }}
                 className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
               >
-                Cancel
+                Batal
               </button>
             </>
           ) : (
             <>
-              <h2>Drop your resume for an ATS score and improvement tips</h2>
-
-              {/* Show PDF library status */}
+              <h2>
+                Jatuhkan resume Anda untuk mendapatkan skor ATS dan tips
+                perbaikan
+              </h2>
               {!pdfLibReady && (
                 <div className="text-yellow-600 text-sm mt-2">
-                  ⚠️ PDF library is loading... Large PDFs may take longer to
-                  process.
+                  ⚠️ Pustaka PDF sedang dimuat... PDF besar mungkin memerlukan
+                  waktu lebih lama untuk diproses.
                 </div>
               )}
             </>
@@ -213,44 +211,44 @@ const Upload = () => {
               className="flex flex-col gap-4 mt-8"
             >
               <div className="form-div">
-                <label htmlFor="company-name">Company Name *</label>
+                <label htmlFor="company-name">Nama Perusahaan *</label>
                 <input
                   type="text"
                   name="company-name"
-                  placeholder="e.g., Google, Microsoft"
+                  placeholder="contoh: Google, Microsoft"
                   id="company-name"
                   required
                 />
               </div>
 
               <div className="form-div">
-                <label htmlFor="job-title">Job Title *</label>
+                <label htmlFor="job-title">Jabatan *</label>
                 <input
                   type="text"
                   name="job-title"
-                  placeholder="e.g., Software Engineer, Product Manager"
+                  placeholder="contoh: Software Engineer, Product Manager"
                   id="job-title"
                   required
                 />
               </div>
 
               <div className="form-div">
-                <label htmlFor="job-description">Job Description *</label>
+                <label htmlFor="job-description">Deskripsi Pekerjaan *</label>
                 <textarea
                   rows={5}
                   name="job-description"
-                  placeholder="Paste the complete job description here..."
+                  placeholder="Tempel deskripsi pekerjaan lengkap di sini..."
                   id="job-description"
                   required
                 />
               </div>
 
               <div className="form-div">
-                <label htmlFor="uploader">Upload Resume (PDF) *</label>
+                <label htmlFor="uploader">Unggah Resume (PDF) *</label>
                 <FileUploader onFileSelect={handleFileSelect} />
                 {file && (
                   <div className="mt-2 text-sm text-green-600">
-                    ✓ Selected: {file.name} (
+                    ✓ Terpilih: {file.name} (
                     {(file.size / 1024 / 1024).toFixed(2)} MB)
                   </div>
                 )}
@@ -261,11 +259,11 @@ const Upload = () => {
                 type="submit"
                 disabled={!file || !pdfLibReady}
               >
-                {!pdfLibReady ? 'Loading PDF Library...' : 'Analyze Resume'}
+                {!pdfLibReady ? 'Memuat Pustaka PDF...' : 'Analisis Resume'}
               </button>
 
               <div className="text-xs text-gray-500 mt-2">
-                * All fields are required. Only PDF files are supported.
+                * Semua kolom wajib diisi. Hanya file PDF yang didukung.
               </div>
             </form>
           )}

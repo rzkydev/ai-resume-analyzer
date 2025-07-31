@@ -29,7 +29,11 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
 
   // Determine subtitle based on score
   const subtitle =
-    score > 69 ? 'Great Job!' : score > 49 ? 'Good Start' : 'Needs Improvement';
+    score > 69
+      ? 'Kerja Bagus!'
+      : score > 49
+        ? 'Awal yang Baik'
+        : 'Perlu Perbaikan';
 
   return (
     <div
@@ -47,8 +51,8 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-2">{subtitle}</h3>
         <p className="text-gray-600 mb-4">
-          This score represents how well your resume is likely to perform in
-          Applicant Tracking Systems used by employers.
+          Skor ini menunjukkan seberapa baik resume Anda dapat melewati Sistem
+          Pelacakan Pelamar (ATS) yang digunakan oleh perusahaan.
         </p>
 
         {/* Suggestions list */}
@@ -80,8 +84,8 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
 
       {/* Closing encouragement */}
       <p className="text-gray-700 italic">
-        Keep refining your resume to improve your chances of getting past ATS
-        filters and into the hands of recruiters.
+        Terus perbaiki resume Anda untuk meningkatkan peluang lolos dari filter
+        ATS dan sampai ke tangan perekrut.
       </p>
     </div>
   );

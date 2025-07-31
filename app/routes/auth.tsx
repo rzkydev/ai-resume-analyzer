@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router';
 
 export const meta = () => [
   { title: 'Resumind | Auth' },
-  { name: 'description', content: 'Log into your account' },
+  { name: 'description', content: 'Masuk ke akun Anda' }, 
 ];
 
 const Auth = () => {
@@ -22,23 +22,23 @@ const Auth = () => {
       <div className="gradient-border shadow-lg">
         <section className="flex flex-col gap-8 bg-white rounded-2xl p-10">
           <div className="flex flex-col items-center gap-2 text-center">
-            <h1>Welcome</h1>
-            <h2>Log In to Continue Your Job Journey</h2>
+            <h1>Selamat Datang</h1>
+            <h2>Masuk untuk Melanjutkan Perjalanan Karir Anda</h2>
           </div>
           <div>
             {isLoading ? (
               <button className="auth-button animate-pulse">
-                <p>Signing you in...</p>
+                <p>Sedang masuk...</p>
               </button>
             ) : (
               <>
                 {auth.isAuthenticated ? (
                   <button className="auth-button" onClick={auth.signOut}>
-                    <p>Log Out</p>
+                    <p>Keluar</p>
                   </button>
                 ) : (
                   <button className="auth-button" onClick={auth.signIn}>
-                    <p>Log In</p>
+                    <p>Masuk</p>
                   </button>
                 )}
               </>

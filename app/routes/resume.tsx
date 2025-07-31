@@ -7,7 +7,7 @@ import Details from '~/components/Details';
 
 export const meta = () => [
   { title: 'Resumind | Review ' },
-  { name: 'description', content: 'Detailed overview of your resume' },
+  { name: 'description', content: 'Tinjauan detail resume Anda' },
 ];
 
 const Resume = () => {
@@ -56,7 +56,7 @@ const Resume = () => {
         <Link to="/" className="back-button">
           <img src="/icons/back.svg" alt="logo" className="w-2.5 h-2.5" />
           <span className="text-gray-800 text-sm font-semibold">
-            Back to Homepage
+            Kembali ke Beranda
           </span>
         </Link>
       </nav>
@@ -75,7 +75,7 @@ const Resume = () => {
           )}
         </section>
         <section className="feedback-section">
-          <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+          <h2 className="text-4xl !text-black font-bold">Tinjauan Resume</h2>
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
               <Summary feedback={feedback} />

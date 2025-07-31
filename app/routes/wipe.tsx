@@ -40,8 +40,8 @@ const WipeApp = () => {
 
   return (
     <div>
-      Authenticated as: {auth.user?.username}
-      <div>Existing files:</div>
+      Terautentikasi sebagai: {auth.user?.username}
+      <div>File yang ada:</div>
       <div className="flex flex-col gap-4">
         {files.map((file) => (
           <div key={file.id} className="flex flex-row gap-4">
@@ -54,7 +54,7 @@ const WipeApp = () => {
           className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"
           onClick={() => handleDelete()}
         >
-          Wipe App Data
+          Hapus Data Aplikasi
         </button>
       </div>
     </div>

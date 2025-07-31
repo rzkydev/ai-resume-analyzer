@@ -65,11 +65,11 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                 <img src="/icons/info.svg" alt="upload" className="size-20" />
               </div>
               <p className="text-lg text-gray-500">
-                <span className="font-semibold">Click to upload</span> or drag
-                and drop
+                <span className="font-semibold">Klik untuk mengunggah</span>{' '}
+                atau seret dan lepas
               </p>
               <p className="text-lg text-gray-500">
-                PDF (max {formatSize(maxFileSize)})
+                PDF (maks {formatSize(maxFileSize)})
               </p>
             </div>
           )}

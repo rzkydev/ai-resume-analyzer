@@ -183,45 +183,45 @@ export const resumes: Resume[] = [
 
 export const AIResponseFormat = `
       interface Feedback {
-      overallScore: number; //max 100
+      overallScore: number; //maksimal 100
       ATS: {
-        score: number; //rate based on ATS suitability
+        score: number; //nilai berdasarkan kesesuaian ATS
         tips: {
           type: "good" | "improve";
-          tip: string; //give 3-4 tips
+          tip: string; //berikan 3-4 tips
         }[];
       };
       toneAndStyle: {
-        score: number; //max 100
+        score: number; //maksimal 100
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; //buat sebagai "judul" singkat untuk penjelasan sebenarnya
+          explanation: string; //jelaskan secara detail di sini
+        }[]; //berikan 3-4 tips
       };
       content: {
-        score: number; //max 100
+        score: number; //maksimal 100
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; //buat sebagai "judul" singkat untuk penjelasan sebenarnya
+          explanation: string; //jelaskan secara detail di sini
+        }[]; //berikan 3-4 tips
       };
       structure: {
-        score: number; //max 100
+        score: number; //maksimal 100
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; //buat sebagai "judul" singkat untuk penjelasan sebenarnya
+          explanation: string; //jelaskan secara detail di sini
+        }[]; //berikan 3-4 tips
       };
       skills: {
-        score: number; //max 100
+        score: number; //maksimal 100
         tips: {
           type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
+          tip: string; //buat sebagai "judul" singkat untuk penjelasan sebenarnya
+          explanation: string; //jelaskan secara detail di sini
+        }[]; //berikan 3-4 tips
       };
     }`;
 
@@ -232,16 +232,16 @@ export const prepareInstructions = ({
   jobTitle: string;
   jobDescription: string;
 }) =>
-  `You are an expert in ATS (Applicant Tracking System) and resume analysis.
-      Please analyze and rate this resume and suggest how to improve it.
-      The rating can be low if the resume is bad.
-      Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
-      If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
-      If available, use the job description for the job user is applying to to give more detailed feedback.
-      If provided, take the job description into consideration.
-      The job title is: ${jobTitle}
-      The job description is: ${jobDescription}
-      Provide the feedback using the following format:
+  `Anda adalah seorang ahli dalam ATS (Applicant Tracking System) dan analisis resume.
+      Silakan analisis dan beri nilai resume ini serta berikan saran untuk memperbaikinya.
+      Penilaian bisa rendah jika resume memang buruk.
+      Lakukan analisis yang menyeluruh dan detail. Jangan ragu untuk menunjukkan kesalahan atau area yang perlu diperbaiki.
+      Jika ada banyak yang perlu diperbaiki, jangan ragu untuk memberikan skor rendah. Ini untuk membantu pengguna memperbaiki resume mereka.
+      Jika tersedia, gunakan deskripsi pekerjaan untuk posisi yang akan dilamar pengguna untuk memberikan umpan balik yang lebih detail.
+      Jika disediakan, pertimbangkan deskripsi pekerjaan tersebut.
+      Jabatan yang dilamar: ${jobTitle}
+      Deskripsi pekerjaan: ${jobDescription}
+      Berikan umpan balik menggunakan format berikut:
       ${AIResponseFormat}
-      Return the analysis as an JSON object, without any other text and without the backticks.
-      Do not include any other text or comments.`;
+      Kembalikan analisis sebagai objek JSON, tanpa teks lain dan tanpa backticks.
+      Jangan sertakan teks atau komentar lain. Berikan semua umpan balik dalam bahasa Indonesia.`;
