@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: 'Resumind' },
+    { title: 'RESUMECUY' },
     {
       name: 'description',
       content: 'Umpan balik cerdas untuk pekerjaan impian Anda!',

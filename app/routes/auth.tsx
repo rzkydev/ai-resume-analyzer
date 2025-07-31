@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
 export const meta = () => [
-  { title: 'Resumind | Auth' },
-  { name: 'description', content: 'Masuk ke akun Anda' }, 
+  { title: 'RESUMECUY | Auth' },
+  { name: 'description', content: 'Masuk ke akun Anda' },
 ];
 
 const Auth = () => {

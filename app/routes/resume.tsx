@@ -6,7 +6,7 @@ import ATS from '~/components/ATS';
 import Details from '~/components/Details';
 
 export const meta = () => [
-  { title: 'Resumind | Review ' },
+  { title: 'RESUMECUY | Review ' },
   { name: 'description', content: 'Tinjauan detail resume Anda' },
 ];
 
